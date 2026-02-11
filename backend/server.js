@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/db.js";
@@ -7,6 +8,11 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+
+// CORS middleware
+if (process.env.NODE_ENV !== "production") {
+  app.use(cors({ origin: "http://localhost:5173" }));
+}
 
 // Middleware để parse JSON
 app.use(express.json());
