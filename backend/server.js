@@ -9,10 +9,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// CORS middleware
-if (process.env.NODE_ENV !== "production") {
-  app.use(cors({ origin: "http://localhost:5173" }));
-}
+// CORS middleware - cho phép từ mọi nguồn
+app.use(cors({ origin: "*" }));
 
 // Middleware để parse JSON
 app.use(express.json());
